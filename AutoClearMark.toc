@@ -1,5 +1,5 @@
-## Interface: 20231008
-## Version: 20231008
+## Interface: 100105
+## Version: 20231008r2
 ## Title: AutoClearMark
 ## Authors: Natherul
 ## Notes: Automatically removed DUMB ASS MARKS.

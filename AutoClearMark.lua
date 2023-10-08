@@ -112,6 +112,8 @@ function RegisteredEvents:ADDON_LOADED(event, addon, ...)
     TankHealerMarkFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
     TankHealerMarkFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
     TankHealerMarkFrame:RegisterEvent("INSPECT_READY")
+    TankHealerMarkFrame:RegisterEvent("PLAYER_LEAVE_COMBAT")
+    TankHealerMarkFrame:RegisterEvent("PLAYER_ENTER_COMBAT")
 	end
 end
 
@@ -135,11 +137,15 @@ function AutoClearMark.SlashCmdHandler(msg, editbox)
 		TankHealerMarkFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 		TankHealerMarkFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
 		TankHealerMarkFrame:RegisterEvent("INSPECT_READY")
+        TankHealerMarkFrame:RegisterEvent("PLAYER_LEAVE_COMBAT")
+        TankHealerMarkFrame:RegisterEvent("PLAYER_ENTER_COMBAT")
 		print("AutoClearMark automatic mode has been turned on.")
 	elseif (msg == "off") then
 		TankHealerMarkFrame:UnregisterEvent("PLAYER_ENTERING_WORLD")
 		TankHealerMarkFrame:UnregisterEvent("GROUP_ROSTER_UPDATE")
 		TankHealerMarkFrame:UnregisterEvent("INSPECT_READY")
+        TankHealerMarkFrame:UnregisterEvent("PLAYER_LEAVE_COMBAT")
+        TankHealerMarkFrame:UnregisterEvent("PLAYER_ENTER_COMBAT")
 		print("AutoClearMark automatic mode has been turned off.")
 		gdbprivate.gdb.gdbdefaults = gdbprivate.gdbdefaults.gdbdefaults
 	elseif (msg == "mark") then
