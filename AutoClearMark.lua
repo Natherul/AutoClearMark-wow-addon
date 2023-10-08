@@ -78,28 +78,7 @@ local loader = CreateFrame("Frame")
 -----------------
 
 local function DAM_Mark()
-	if IsInRaid() then 
-		return
-	elseif IsInGroup() then
-		local ROLEMARKS={["TANK"]=0,["HEALER"]=0}
-		for i=1,5 do 
-			local role=UnitGroupRolesAssigned("party"..i)
-			if ROLEMARKS[role]then 
-				SetRaidTarget("party"..i,ROLEMARKS[role])
-				--print(i, role)
-			end 
-		end
-		local currentSpecID, currentSpecName = GetSpecializationInfo(GetSpecialization())
-		--print("Your current spec:", currentSpecName)
-		--print("Your current spec ID:", currentSpecID)
-		local roleToken = GetSpecializationRoleByID(currentSpecID)
-		--print(roleToken)
-		if ROLEMARKS[roleToken]then 
-			SetRaidTarget("player", ROLEMARKS[roleToken])
-		end
-	else
-		SetRaidTarget("player", 0)
-	end
+	SetRaidTarget("player", 0)
 end
 
 local TankHealerMarkFrame = CreateFrame("Frame", "TankHealerMarkFrame",UIParent)
@@ -129,7 +108,10 @@ function RegisteredEvents:ADDON_LOADED(event, addon, ...)
 		SlashCmdList["DEJAAUTOMARK"] = function (msg, editbox)
 			AutoClearMark.SlashCmdHandler(msg, editbox)	
 	end
-	--	DEFAULT_CHAT_FRAME:AddMessage("AutoClearMark loaded successfully. For options: Esc>Interface>AddOns or type /dam.",0,192,255)
+    DEFAULT_CHAT_FRAME:AddMessage("AutoClearMark loaded successfully. Automatically enabling auto disable of marks! Configure with /dam",0,192,255)
+    TankHealerMarkFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+    TankHealerMarkFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
+    TankHealerMarkFrame:RegisterEvent("INSPECT_READY")
 	end
 end
 

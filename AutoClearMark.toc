@@ -1,5 +1,5 @@
-## Interface: 90200
-## Version: R90200r1
+## Interface: 20231008
+## Version: 20231008
 ## Title: AutoClearMark
 ## Authors: Natherul
 ## Notes: Automatically removed DUMB ASS MARKS.
