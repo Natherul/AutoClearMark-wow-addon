@@ -1,3 +1,6 @@
+No longer maintained!
+
+
 # AutoClearMark-wow-addon
 Addon to automatically clear marks on tanks and healers in normal groups in wow. Modified DejaAutoMark
 
